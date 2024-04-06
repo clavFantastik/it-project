@@ -11,7 +11,10 @@ RUN apt-get install -y nodejs
 RUN pip install django
 RUN python -m pip install django-tailwind
 RUN pip install django_browser_reload
+
 WORKDIR /KINOLIB/other/static_src
+RUN npm i
+
 RUN npm install -D tailwindcss postcss autoprefixer
 
 # Устанавливаем зависимости Python
@@ -20,3 +23,4 @@ RUN npm install -D tailwindcss postcss autoprefixer
 #
 #RUN python manage.py tailwind start
 WORKDIR /KINOLIB
+
