@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    <!-- Форма фильтров -->
+    <div class="dropdown mb-2">
+        <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Фильтры
+        </button>
+
+        <form action="" method="get" class="dropdown-menu bg-dark" data-bs-theme="dark">
+            <div class="form-check text-white mx-3">
+                <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on">
+                <input type="hidden" name="q" value="request.GET.q">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Товары по акции
+                </label>
+            </div>
+            <p class="text-white mx-3 mt-3">Сортировать:</p>
+            <div class="form-check text-white mx-3">
+                <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault1" value="default" checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                    По умолчанию
+                </label>
+            </div>
+            <div class="form-check text-white mx-3">
+                <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault2" value="price">
+                <label class="form-check-label" for="flexRadioDefault2">
+                    От чего-то к чему-то
+                </label>
+            </div>
+            <div class="form-check text-white mx-3">
+                <input class="form-check-input" type="radio" name="order_by" id="flexRadioDefault3" value="-price">
+                <label class="form-check-label" for="flexRadioDefault3">
+                    От чему-то к чего-то
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary mx-3 mt-3">Применить</button>
+        </form>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/angry-birds.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="../goods/product.html">
+                    <p class="card-title">Внатуре Злые птицы</p>
+                </a>
+                <p class="card-text text-truncate">Мультфильм</p>
+                <p class="product_id">id: 1</p>
+                <div class="d-flex justify-content-between">
+                    <p><strong>90 минут</strong></p>
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn add-to-cart">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/set of tea table and two chairs.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Мстители мстят</p>
+                </a>
+                <p class="card-text text-truncate">Фильм</p>
+                <p class="product_id">id: 2</p>
+                <div class="d-flex justify-content-between">
+                    <p><strong>240 минут</strong></p>
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn add-to-cart">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/double bed.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Джовушкер</p>
+                </a>
+                <p class="card-text text-truncate">Фильм</p>
+                <p class="product_id">id: 3</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>125 минут</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/kitchen table.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Кунг Фу Падла 3</p>
+                </a>
+                <p class="card-text text-truncate">Мультфильм</p>
+                <p class="product_id">id: 4</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>120 минут</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/kitchen table 2.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Войны звезд</p>
+                </a>
+                <p class="card-text text-truncate">Фильм</p>
+                <p class="product_id">id: 5</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>120 минут</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/corner sofa.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Анна Каренина</p>
+                </a>
+                <p class="card-text text-truncate">Книга</p>
+                <p class="product_id">id: 6</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>340 страниц</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/bedside table.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Бойцовский клуб</p>
+                </a>
+                <p class="card-text text-truncate">Книга</p>
+                <p class="product_id">id: 7</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>258 страниц</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/sofa.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Герой нашего времени</p>
+                </a>
+                <p class="card-text text-truncate">Книга</p>
+                <p class="product_id">id: 8</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>460 страниц</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/office chair.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Мастер и Маргарита</p>
+                </a>
+                <p class="card-text text-truncate">Книга</p>
+                <p class="product_id">id: 9</p>
+                <div class="d-flex justify-content-between">
+
+                    <p><strong>800 страниц</strong></p>
+
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Карта товара -->
+    <div class="col-lg-4 col-md-6 p-4">
+        <div class="card border-primary rounded custom-shadow">
+            <img src="../deps/images/goods/plants.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <a href="#">
+                    <p class="card-title">Обломов</p>
+                </a>
+                <p class="card-text text-truncate">Книга</p>
+                <p class="product_id">id: 10</p>
+                <div class="d-flex justify-content-between">
+                    <p><strong>370 страниц</strong></p>
+                    <!-- <p><strong>100.00 $</strong></p> -->
+                    <a href="#" class="btn">
+                        <img class="mx-1" src="../deps/icons/cart-plus.svg" alt="Catalog Icon"
+                            width="32" height="32">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- Пагинация -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center my-4">
+        <div class="custom-shadow d-flex">
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+        </div>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block footer %}
+    <footer class="py-4 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
+        </div>
+    </footer>
+{% endblock %}
