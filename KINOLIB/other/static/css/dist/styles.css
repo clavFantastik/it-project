@@ -987,10 +987,6 @@ select {
   display: inline-flex;
 }
 
-.table {
-  display: table;
-}
-
 .flow-root {
   display: flow-root;
 }
@@ -1658,11 +1654,6 @@ select {
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-}
-
-.hover\:text-white:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-2xl:hover {
