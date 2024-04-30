@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.urls import path, include
 from user_sign import views
 
+from KINOLIB.settings import DEBUG
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('home.urls')), # тут поменял с аккаунтом
@@ -13,3 +15,7 @@ urlpatterns = [
     path('catalog/', include('goods.urls'))
     
 ]
+
+if DEBUG:
+    urlpatterns += [path('__debug__', include('debug_toolbar.urls'))
+    ]

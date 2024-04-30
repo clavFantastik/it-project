@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'other',
     'django_browser_reload',
     'goods',
+    'debug_toolbar',
 
 ]
 
@@ -51,7 +52,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware'
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'KINOLIB.urls'
