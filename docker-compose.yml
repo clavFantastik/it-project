@@ -23,7 +23,12 @@ services:
     <<: *default-app
     command:  >
       sh -c "cd ./other/static_src &&
-             npm i
-             npm run dev"
+             npm i &&
+             npm run dev
+             "
+
+    
+    
+    restart: always
     tty: true
 
