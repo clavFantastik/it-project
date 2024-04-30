@@ -6,6 +6,11 @@ class Categories(models.Model):
 
     class Meta:
         db_table = 'category'
+        verbose_name = 'Категорию'
+        verbose_name_plural = 'Категории'
+
+    def __str__(self):
+        return self.name
 
 class Products(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name='Название')
@@ -18,4 +23,9 @@ class Products(models.Model):
 
     class Meta:
         db_table = 'product'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
+    def __str__(self):
+        return self.name
 
