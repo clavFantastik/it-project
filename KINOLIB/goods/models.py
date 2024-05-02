@@ -18,7 +18,7 @@ class Products(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
     image = models.ImageField(upload_to='goods_images', blank=True, null=True, verbose_name='Изображение')
     type = models.TextField(blank=True, null=True, verbose_name='Тип')
-    time = models.IntegerField(default=0, verbose_name='Время')
+    time = models.TextField(default=0, verbose_name='Время')
     category = models.ForeignKey(to=Categories, on_delete=models.CASCADE, verbose_name='Категория')
 
     class Meta:
@@ -29,3 +29,5 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+    def display_id(self):
+        return f"{self.id:03}"

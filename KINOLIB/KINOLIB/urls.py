@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.urls import path, include
 from user_sign import views
 
-from KINOLIB.settings import DEBUG
+from KINOLIB import settings
+from django.conf.urls.static import static # для картинок
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,10 +13,11 @@ urlpatterns = [
     path('', include('account.urls')),
     # path('auth_home/', include('auth_home.urls')),
     path("__reload__/", include("django_browser_reload.urls")),
-    path('catalog/', include('goods.urls'))
+    path('catalog/', include('goods.urls', namespace='catalog')),
     
 ]
-
-if DEBUG:
+# тут
+if settings.DEBUG:
     urlpatterns += [path('__debug__', include('debug_toolbar.urls'))
     ]
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

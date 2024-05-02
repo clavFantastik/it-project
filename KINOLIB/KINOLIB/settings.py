@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware',
 
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',         # here
 ]
 
 ROOT_URLCONF = 'KINOLIB.urls'
@@ -130,3 +130,6 @@ STATIC_URL = 'Tailwindcss/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_URL = 'Tailwindcss/media/' # картинки для бд
+
+MEDIA_ROOT = BASE_DIR / 'media'
