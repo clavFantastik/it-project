@@ -1,14 +1,15 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
 <html lang="en" id="themeToggle" class="dark">
+
 <head>
     <title>KINOLIB</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% tailwind_css %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -18,384 +19,428 @@
 
 <body class="bg-white dark:bg-gray-900">
 
-<header class="bg-white dark:bg-gray-900">
-    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 fixed w-[100%] bg-white dark:bg-gray-900 z-40 bg-opacity-85 dark:bg-opacity-85"
-         style="max-width: 100%; margin-top: -80px" aria-label="Global">
-        <div class="flex lg:flex-1">
-            <a href="#" class="-m-1.5 p-1.5 flex">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
-                     alt="" style="margin-right: 20px">
-                <span class="justify-center align-middle align-center flex text-2xl font-bold text-gray-900 dark:text-white ">
-                      Kin
-                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: auto" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z"/>
-                      </svg>
-                      Lib
-                  </span>
-            </a>
-        </div>
+    <header class="bg-white dark:bg-gray-900">
+        <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 fixed w-[100%] bg-white dark:bg-gray-900 z-40 bg-opacity-85 dark:bg-opacity-85"
+            style="max-width: 100%; margin-top: -80px" aria-label="Global">
+            <div class="flex lg:flex-1">
+                <a href="#" class="-m-1.5 p-1.5 flex">
+                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
+                        alt="" style="margin-right: 20px">
+                    <span
+                        class="justify-center align-middle align-center flex text-2xl font-bold text-gray-900 dark:text-white ">
+                        Kin
+                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: auto" fill="none" viewBox="0 0 24 24"
+                            stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" />
+                        </svg>
+                        Lib
+                    </span>
+                </a>
+            </div>
 
-        <div class="flex lg:hidden">
-            <button type="button"
+            <div class="flex lg:hidden">
+                <button type="button"
                     class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-white"
                     onclick="Menu.style.display = 'block'">
-                <span class="sr-only">Open main menu</span>
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                     aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-                </svg>
-            </button>
-        </div>
-
-        <div class="hidden lg:flex lg:gap-x-12">
-
-            <a href="#home" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Главная</a>
-            <a href="#top" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Топ-10 за месяц</a>
-            <a href="#plans" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Планы</a>
-            <a href="#contact" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Контакты</a>
-        </div>
-
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a style="margin-right: 2vh" class="hover:text-primary block transition dark:text-white md:px-4 "
-               onclick="ToggleTheme()">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="block w-6 h-6 dark:hidden">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-6 dark:block">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
-                </svg>
-            </a>
-
-            <a href="/login" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white flex">Войти 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="margin-top: 4px; margin-left: 4px">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/>
-                </svg>
-            </a>
-        </div>
-    </nav>
-
-
-    <div class="lg:hidden" aria-modal="true" style="display: none;" id="Menu">
-        <div class="fixed inset-0 z-10"></div>
-        <div style="z-index: 100;" class=" fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-opacity-95 dark:bg-opacity-95">
-            <div class="flex items-center justify-between">
-                <a href="#" class="-m-1.5 p-1.5">
-                    <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600" alt="">
-                </a>
-                <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
-                        onclick="Menu.style.display = 'none' ">
-                    <span class="sr-only">Close menu</span>
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                     </svg>
                 </button>
             </div>
 
-            <div class="mt-6 flow-root">
-                <div class="-my-6 divide-y divide-gray-500/10">
-                    <div class="space-y-2 py-6">
+            <div class="hidden lg:flex lg:gap-x-12">
 
-                        <a href="#home"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700  ">Главная</a>
-                        <a href="#top"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 ">Топ-10
-                            за месяц</a>
-                        <a href="#plans"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 ">Планы</a>
+                <a href="#home" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Главная</a>
+                <a href="#top" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Топ-10 за месяц</a>
+                <a href="#plans" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Планы</a>
+                <a href="#contact" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Контакты</a>
+            </div>
 
-                        <a href="#contact"
-                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 ">Контакты</a>
-                    </div>
-                    <div class="py-6 flex">
-                        <a style="margin-top: 12px; margin-right: 2vh"
-                           class="hover:text-primary block transition dark:text-white md:px-4 " onclick="ToggleTheme()">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="block w-6 h-6 dark:hidden">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
-                            </svg>
+            <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+                <a style="margin-right: 2vh" class="hover:text-primary block transition dark:text-white md:px-4 "
+                    onclick="ToggleTheme()">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="block w-6 h-6 dark:hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="hidden w-6 h-6 dark:block">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+                </a>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-6 dark:block">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
-                            </svg>
+                <a href="/login" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white flex">Войти 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-4 h-4" style="margin-top: 4px; margin-left: 4px">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                    </svg>
+                </a>
+            </div>
+        </nav>
 
-                        </a>
 
-                        <a href="/login"
-                           class="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 flex">Войти
-                             
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="margin-top: 7px;">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/>
-                            </svg>
-                        </a>
+        <div class="lg:hidden" aria-modal="true" style="display: none;" id="Menu">
+            <div class="fixed inset-0 z-10"></div>
+            <div style="z-index: 100;"
+                class=" fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-opacity-95 dark:bg-opacity-95">
+                <div class="flex items-center justify-between">
+                    <a href="#" class="-m-1.5 p-1.5">
+                        <span class="sr-only">Your Company</span>
+                        <img class="h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600" alt="">
+                    </a>
+                    <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
+                        onclick="Menu.style.display = 'none' ">
+                        <span class="sr-only">Close menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
 
+                <div class="mt-6 flow-root">
+                    <div class="-my-6 divide-y divide-gray-500/10">
+                        <div class="space-y-2 py-6">
+
+                            <a href="#home"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700  ">Главная</a>
+                            <a href="#top"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 ">Топ-10
+                                за месяц</a>
+                            <a href="#plans"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 ">Планы</a>
+
+                            <a href="#contact"
+                                class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 ">Контакты</a>
+                        </div>
+                        <div class="py-6 flex">
+                            <a style="margin-top: 12px; margin-right: 2vh"
+                                class="hover:text-primary block transition dark:text-white md:px-4 "
+                                onclick="ToggleTheme()">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="block w-6 h-6 dark:hidden">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                                </svg>
+
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-6 dark:block">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                                </svg>
+
+                            </a>
+
+                            <a href="/login"
+                                class="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 flex">Войти
+                                 
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="margin-top: 7px;">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+                                </svg>
+                            </a>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</header>
+    </header>
 
-<main class="space-y-40 mb-40">
-    <div class="relative" id="home" style="margin-top: 80px">
-        <div aria-hidden="true"
-             class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 bg-fixed bg-center bg-no-repeat"
-             style="background-image: url('{% static 'img/preview_info3.jpg' %}')">
-            <div class="blur-[106px] h-56 bg-gradient-to-br from-blue-900 to-purple-400 dark:from-blue-700"></div>
-            <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
-        </div>
+    <main class="space-y-40 mb-40">
+        <div class="relative" id="home" style="margin-top: 80px">
+            <div aria-hidden="true"
+                class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 bg-fixed bg-center bg-no-repeat"
+                style="background-image: url('{% static 'img/preview_info3.jpg' %}')">
+                <div class="blur-[106px] h-56 bg-gradient-to-br from-blue-900 to-purple-400 dark:from-blue-700"></div>
+                <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+            </div>
 
-        <div class="max-w-8xl mx-auto px-6 md:px-12 xl:px-6">
-            <div class="relative pt-36 ml-auto">
-                <div class="lg:w-2/3 text-center mx-auto">
-                    <h1 class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">Поменяй свое
-                        представление о кино и книгах вместе с нами.</h1>
-                    <p class="mt-8 text-gray-700 dark:text-gray-300" style="font-weight: bolder">Открой для себя самый
-                        лучший сервис по просмотру кино и чтению книг!</p>
-                    <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                        <a href="#" style="min-height: 60px;min-width: 150px"
-                           class="button relative flex h-11 w-full items-center justify-center px-6 hover:scale-105 active:duration-75 active:scale-95 before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
+            <div class="max-w-8xl mx-auto px-6 md:px-12 xl:px-6">
+                <div class="relative pt-36 ml-auto">
+                    <div class="lg:w-2/3 text-center mx-auto">
+                        <h1 class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">Поменяй
+                            свое
+                            представление о кино и книгах вместе с нами.</h1>
+                        <p class="mt-8 text-gray-700 dark:text-gray-300" style="font-weight: bolder">Открой для себя
+                            самый
+                            лучший сервис по просмотру кино и чтению книг!</p>
+                        <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
+                            <a href="#" style="min-height: 60px;min-width: 150px"
+                                class="button relative flex h-11 w-full items-center justify-center px-6 hover:scale-105 active:duration-75 active:scale-95 before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
                                 <span class="relative text-base font-semibold text-white dark:text-white flex"> Перейти 
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
                                     </svg>
                                 </span>
-                        </a>
+                            </a>
 
-                        <a href="#" style="min-height: 60px;min-width: 150px"
-                           class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-white/80 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
-                            <span class="relative text-base font-semibold text-primary dark:text-white">Прочее</span>
-                        </a>
-                    </div>
-
-                    <div class="hidden py-8 mt-16 sm:flex justify-between"
-                         style="margin-top: 150px; padding-bottom: 100px; opacity: 0.9; border-top: 2px solid rgba(147,112,219,0.4)">
-                        <div class="text-left "
-                             style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
-                            <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
-                                <video class="w-12 h-12" preload="none"
-                                       style="filter: brightness(100%);mix-blend-mode: multiply;background: transparent  url('https://cdn-icons-png.flaticon.com/512/11679/11679001.png')"
-                                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
-                                    <source src="https://cdn-icons-mp4.flaticon.com/512/15579/15579004.mp4"
-                                            type="video/mp4">
-                                </video>
-                            </h6>
-                            <p class="mt-2  text-gray-600" style=" font-weight: bold">Все бесплатно</p>
+                            <a href="#" style="min-height: 60px;min-width: 150px"
+                                class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-white/80 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
+                                <span
+                                    class="relative text-base font-semibold text-primary dark:text-white">Прочее</span>
+                            </a>
                         </div>
 
-                        <div class="text-left"
-                             style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
-                            <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
-                                <video class="w-12 h-12" preload="none"
-                                       style="mix-blend-mode: multiply;background: transparent  url('https://cdn-icons-png.flaticon.com/512/13373/13373711.png')"
-                                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
-                                    <source src="https://cdn-icons-mp4.flaticon.com/512/12146/12146069.mp4"
+                        <div class="hidden py-8 mt-16 sm:flex justify-between"
+                            style="margin-top: 150px; padding-bottom: 100px; opacity: 0.9; border-top: 2px solid rgba(147,112,219,0.4)">
+                            <div class="text-left "
+                                style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
+                                <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
+                                    <video class="w-12 h-12" preload="none"
+                                        style="filter: brightness(100%);mix-blend-mode: multiply;background: transparent  url('https://cdn-icons-png.flaticon.com/512/11679/11679001.png')"
+                                        autoplay="autoplay" loop="true" muted="muted" playsinline="">
+                                        <source src="https://cdn-icons-mp4.flaticon.com/512/15579/15579004.mp4"
                                             type="video/mp4">
-                                </video>
-                            </h6>
-                            <p class="mt-2  text-gray-600" style=" font-weight: bold">Быстрый отклик</p>
-                        </div>
+                                    </video>
+                                </h6>
+                                <p class="mt-2  text-gray-600" style=" font-weight: bold">Все бесплатно</p>
+                            </div>
 
-                        <div class="text-left"
-                             style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
-                            <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
-                                <video class="w-12 h-12" preload="none"
-                                       style="mix-blend-mode: multiply ;background: transparent  url('https://cdn-icons-png.flaticon.com/512/11784/11784407.png') 50% 50%"
-                                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
-                                    <source src="https://cdn-icons-mp4.flaticon.com/512/11784/11784407.mp4"
+                            <div class="text-left"
+                                style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
+                                <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
+                                    <video class="w-12 h-12" preload="none"
+                                        style="mix-blend-mode: multiply;background: transparent  url('https://cdn-icons-png.flaticon.com/512/13373/13373711.png')"
+                                        autoplay="autoplay" loop="true" muted="muted" playsinline="">
+                                        <source src="https://cdn-icons-mp4.flaticon.com/512/12146/12146069.mp4"
                                             type="video/mp4">
-                                </video>
-                            </h6>
-                            <p class="mt-2 text-gray-600" style=" font-weight: bold">Обширная бд</p>
-                        </div>
+                                    </video>
+                                </h6>
+                                <p class="mt-2  text-gray-600" style=" font-weight: bold">Быстрый отклик</p>
+                            </div>
 
+                            <div class="text-left"
+                                style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
+                                <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
+                                    <video class="w-12 h-12" preload="none"
+                                        style="mix-blend-mode: multiply ;background: transparent  url('https://cdn-icons-png.flaticon.com/512/11784/11784407.png') 50% 50%"
+                                        autoplay="autoplay" loop="true" muted="muted" playsinline="">
+                                        <source src="https://cdn-icons-mp4.flaticon.com/512/11784/11784407.mp4"
+                                            type="video/mp4">
+                                    </video>
+                                </h6>
+                                <p class="mt-2 text-gray-600" style=" font-weight: bold">Обширная бд</p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="top">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-            <div class="mb-12 space-y-2 text-center">
-                <h2 class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white flex"
-                    style="color: rgba(147,112,219,1); text-align: left">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10">
-                        <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd"/>
-                    </svg>
-                      Топ-10 за месяц
-                </h2>
-                <!-- Slides -->
-                <div class="swiper" style="width: 100%; padding-left: 30px; padding-right: 30px; margin-top: 50px">
-                    <div class="swiper-wrapper" style="width: 100%">
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
-                        <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
-                                                       height="100%"></div>
+        <div id="top">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                <div class="mb-12 space-y-2 text-center">
+                    <h2 class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white flex"
+                        style="color: rgba(147,112,219,1); text-align: left">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-10 h-10">
+                            <path fill-rule="evenodd"
+                                d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                          Топ-10 за месяц
+                    </h2>
+                    <!-- Slides -->
+                    <div class="swiper" style="width: 100%; padding-left: 30px; padding-right: 30px; margin-top: 50px">
+                        <div class="swiper-wrapper" style="width: 100%">
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                            <div class="swiper-slide"><img src="{% static 'img/wolf.jpg' %}" alt="" width="auto"
+                                    height="100%"></div>
+                        </div>
+
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+
+                        <!-- If we need navigation buttons -->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+
+                        <!-- If we need scrollbar -->
                     </div>
 
-                    <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
 
-                    <!-- If we need navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-
-                    <!-- If we need scrollbar -->
                 </div>
 
 
             </div>
-
-
         </div>
-    </div>
 
 
-    <div id="plans">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-            <div class="mb-12 space-y-2 text-center">
-                <div class="relative py-16">
-                    <div aria-hidden="true"
-                         class="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
-                        <div class="blur-[106px] h-56 bg-gradient-to-br from-blue-900 to-purple-400 dark:from-blue-700"></div>
-                        <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
+        <div id="plans">
+            <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                <div class="mb-12 space-y-2 text-center">
+                    <div class="relative py-16">
+                        <div aria-hidden="true"
+                            class="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+                            <div
+                                class="blur-[106px] h-56 bg-gradient-to-br from-blue-900 to-purple-400 dark:from-blue-700">
+                            </div>
+                            <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600">
+                            </div>
+                        </div>
+                        <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                            <div class="relative">
+
+                                <div class="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
+                                    <h1
+                                        class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl flex justify-center">
+                                        <img class="h-8 w-auto"
+                                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
+                                            alt="" style="margin-left: -30px;margin-right: 20px; margin-top: 10px">Kin
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: auto" fill="none"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z" />
+                                        </svg>
+                                        Lib
+                                    </h1>
+                                    <p class="text-center text-xl text-gray-600 dark:text-gray-300">
+                                        Стань частью нашего проекта, который сделан с душой
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
-                        <div class="relative">
+                    <h2 class="max-w-7xl mx-auto text-3xl font-bold text-gray-800 md:text-4xl dark:text-white flex"
+                        style="color: rgba(147,112,219,1); text-align: left; margin-bottom: 80px; margin-top: 120px">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            class="w-10 h-10">
+                            <path fill-rule="evenodd"
+                                d="M8.161 2.58a1.875 1.875 0 0 1 1.678 0l4.993 2.498c.106.052.23.052.336 0l3.869-1.935A1.875 1.875 0 0 1 21.75 4.82v12.485c0 .71-.401 1.36-1.037 1.677l-4.875 2.437a1.875 1.875 0 0 1-1.676 0l-4.994-2.497a.375.375 0 0 0-.336 0l-3.868 1.935A1.875 1.875 0 0 1 2.25 19.18V6.695c0-.71.401-1.36 1.036-1.677l4.875-2.437ZM9 6a.75.75 0 0 1 .75.75V15a.75.75 0 0 1-1.5 0V6.75A.75.75 0 0 1 9 6Zm6.75 3a.75.75 0 0 0-1.5 0v8.25a.75.75 0 0 0 1.5 0V9Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                         
+                        Планы
+                    </h2>
+                    <ol class="items-center sm:flex max-w-7xl mx-auto">
 
-                            <div class="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
-                                <h1 class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl flex justify-center">
-                                    <img class="h-8 w-auto"
-                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
-                                         alt="" style="margin-left: -30px;margin-right: 20px; margin-top: 10px">Kin
-                                    <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: auto" fill="none"
-                                         viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z"/>
+                        <li class="relative mb-6 sm:mb-0">
+                            <div class="flex items-center">
+                                <div
+                                    class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
+                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                                     </svg>
-                                    Lib
-                                </h1>
-                                <p class="text-center text-xl text-gray-600 dark:text-gray-300">
-                                    Стань частью нашего проекта, который сделан с душой
-                                </p>
+                                </div>
+                                <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="mt-3 sm:pe-8">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">KINOLIB v1.0.0</h3>
+                                <time
+                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                                    Релиз 20 мая, 2024
+                                </time>
+                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Выпустить проект в
+                                    предконечном состоянии</p>
+                            </div>
+                        </li>
+                        <li class="relative mb-6 sm:mb-0">
+                            <div class="flex items-center">
+                                <div
+                                    class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
+                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </div>
+                                <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                            </div>
+                            <div class="mt-3 sm:pe-8">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">KINOLIB v1.1.0</h3>
+                                <time
+                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                                    Релиз 28 июня, 2024
+                                </time>
+                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Разработать систему
+                                    реального просмотра и чтения</p>
+                            </div>
+                        </li>
+                        <li class="relative mb-6 sm:mb-0">
+                            <div class="flex items-center">
+                                <div
+                                    class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
+                                    <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+                                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                                    </svg>
+                                </div>
+                                <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
+                            </div>
+                            <div class="mt-3 sm:pe-8">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">KINOLIB v1.2.0</h3>
+                                <time
+                                    class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                                    Релиз 12 июля, 2024
+                                </time>
+                                <p class="text-base font-normal text-gray-500 dark:text-gray-400">Доработать проект до
+                                    конечного состояния и сделать деплой</p>
+                            </div>
+                        </li>
+                    </ol>
+
                 </div>
-                <h2 class="max-w-7xl mx-auto text-3xl font-bold text-gray-800 md:text-4xl dark:text-white flex"
-                    style="color: rgba(147,112,219,1); text-align: left; margin-bottom: 80px; margin-top: 120px">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10">
-                        <path fill-rule="evenodd" d="M8.161 2.58a1.875 1.875 0 0 1 1.678 0l4.993 2.498c.106.052.23.052.336 0l3.869-1.935A1.875 1.875 0 0 1 21.75 4.82v12.485c0 .71-.401 1.36-1.037 1.677l-4.875 2.437a1.875 1.875 0 0 1-1.676 0l-4.994-2.497a.375.375 0 0 0-.336 0l-3.868 1.935A1.875 1.875 0 0 1 2.25 19.18V6.695c0-.71.401-1.36 1.036-1.677l4.875-2.437ZM9 6a.75.75 0 0 1 .75.75V15a.75.75 0 0 1-1.5 0V6.75A.75.75 0 0 1 9 6Zm6.75 3a.75.75 0 0 0-1.5 0v8.25a.75.75 0 0 0 1.5 0V9Z" clip-rule="evenodd"/>
-                    </svg>
-                     
-                    Планы
-                </h2>
-                <ol class="items-center sm:flex max-w-7xl mx-auto">
-
-                    <li class="relative mb-6 sm:mb-0">
-                        <div class="flex items-center">
-                            <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-
-                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                </svg>
-                            </div>
-                            <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
-                        </div>
-                        <div class="mt-3 sm:pe-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">KINOLIB v1.0.0</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                                Релиз 20 мая, 2024
-                            </time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Выпустить проект в
-                                предконечном состоянии</p>
-                        </div>
-                    </li>
-                    <li class="relative mb-6 sm:mb-0">
-                        <div class="flex items-center">
-                            <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                </svg>
-                            </div>
-                            <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
-                        </div>
-                        <div class="mt-3 sm:pe-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">KINOLIB v1.1.0</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                                Релиз 28 июня, 2024
-                            </time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Разработать систему
-                                реального просмотра и чтения</p>
-                        </div>
-                    </li>
-                    <li class="relative mb-6 sm:mb-0">
-                        <div class="flex items-center">
-                            <div class="z-10 flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full ring-0 ring-white dark:bg-blue-900 sm:ring-8 dark:ring-gray-900 shrink-0">
-                                <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
-                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                                </svg>
-                            </div>
-                            <div class="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
-                        </div>
-                        <div class="mt-3 sm:pe-8">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">KINOLIB v1.2.0</h3>
-                            <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                                Релиз 12 июля, 2024
-                            </time>
-                            <p class="text-base font-normal text-gray-500 dark:text-gray-400">Доработать проект до
-                                конечного состояния и сделать деплой</p>
-                        </div>
-                    </li>
-                </ol>
-
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
 
-<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800" id="contact">
-    <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-      <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/"
-                                                                                      class="hover:underline">by Kirill team</a>. All Rights Reserved.
-    </span>
-        <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-            <li style="margin-top: 15px; margin-right: 10px">
-                <a href="#" class="hover:underline me-4 md:me-6"><img src="{% static 'img/git.png' %}" alt=""
-                                                                      class="w-8 h-8"></a>
-            </li>
-            <li style="margin-top: 15px; margin-right: 10px">
-                <a href="#" class="hover:underline me-4 md:me-6"><img src="{% static 'img/tg.png' %}" alt=""
-                                                                      class="w-8 h-8"></a>
-            </li>
-            <li style="margin-top: 15px; margin-right: 10px">
-                <a href="#" class="hover:underline me-4 md:me-6"><img src="{% static 'img/vk.png' %}" alt=""
-                                                                      class="w-8 h-8"></a>
-            </li>
+    <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800" id="contact">
+        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/"
+                    class="hover:underline">by Kirill team</a>. All Rights Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li style="margin-top: 15px; margin-right: 10px">
+                    <a href="#" class="hover:underline me-4 md:me-6"><img src="{% static 'img/git.png' %}" alt=""
+                            class="w-8 h-8"></a>
+                </li>
+                <li style="margin-top: 15px; margin-right: 10px">
+                    <a href="#" class="hover:underline me-4 md:me-6"><img src="{% static 'img/tg.png' %}" alt=""
+                            class="w-8 h-8"></a>
+                </li>
+                <li style="margin-top: 15px; margin-right: 10px">
+                    <a href="#" class="hover:underline me-4 md:me-6"><img src="{% static 'img/vk.png' %}" alt=""
+                            class="w-8 h-8"></a>
+                </li>
 
-        </ul>
-    </div>
-</footer>
+            </ul>
+        </div>
+    </footer>
 
 </body>
 
