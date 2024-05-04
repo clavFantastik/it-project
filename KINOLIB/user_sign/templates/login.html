@@ -62,36 +62,40 @@
                             required>
                     </div>
 
-                    <div>
-                        <label class="block mb-1 font-bold text-gray-500">Номер телефона</label>
-                        <div class="relative mt-2.5">
-                            <div class="absolute inset-y-0 left-0 flex items-center">
-                                <label for="country" class="sr-only">Страна</label>
-                                <select id="country" name="country"
-                                    class="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option value="">Выберите страну</option>
-                                    <option value="7">RUS (+7)</option>
-                                    <option value="1">US / CA (+1)</option>
-                                    <option value="27">ZA (+27)</option>
-                                    <option value="41">CH (+41)</option>
-                                    <option value="996">KG (+996)</option>
-                                </select>
-                            </div>
-                            <input id="phone-number" type="tel" name="phone-number" autocomplete="tel"
-                                class="block w-full rounded-md border-0 px-3.5 py-2 pl-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        </div>
+                    <div class="flex items-center">
+                        <label class="block mb-1 font-bold text-gray-500 mr-3">Выберите страну</label>
+                        <select id="country" name="country"
+                            class="rounded-md border border-gray-200 p-1 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
+                            <option value=""></option>
+                            <option value="7">RUS (+7)</option>
+                            <option value="1">US / CA (+1)</option>
+                            <option value="27">ZA (+27)</option>
+                            <option value="41">CH (+41)</option>
+                            <option value="996">KG (+996)</option>
+                        </select>
+                    </div>
+
+                    <div style="position: relative; margin-top: 1rem;">
+                        <input id="phone-number" type="tel" name="phone-number" autocomplete="tel"
+                            placeholder="Введите номер телефона"
+                            class="block w-full rounded-md border border-gray-200 p-2 pl-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <span id="selected-country"
+                            style="position: absolute; top: 50%; transform: translateY(-50%); left: 8px; color: #718096;"></span>
                     </div>
 
                     <script>
                         document.getElementById("country").addEventListener("change", function () {
                             var selectedCountryCode = document.getElementById("country").value;
                             if (selectedCountryCode) {
-                                document.getElementById("phone-number").placeholder = "+" + selectedCountryCode;
+                                document.getElementById("selected-country").textContent = "+" + selectedCountryCode;
                             } else {
-                                document.getElementById("phone-number").placeholder = "";
+                                document.getElementById("selected-country").textContent = "";
                             }
+                            document.getElementById("phone-number").placeholder = "Введите номер телефона";
                         });
                     </script>
+
+
 
                     <div>
                         <label class="block mb-1 font-bold text-gray-500">Пароль</label>
