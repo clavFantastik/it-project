@@ -11,5 +11,8 @@ def ShowUserSign(request):
 def AuthorizedPage(request):
     return render(request, "logIn_2.html")
 
+def ForgotPage(request):
+    return render(request, "forgot.html")
+
 
 

@@ -6,4 +6,5 @@ urlpatterns = [
     path("authorized/", views.AuthorizedPage, name="authorized"),
     path("example/", views.FilmPage, name="film"),
     path("login/example/", views.FilmPage, name="login_film"),
+    path("forgot/", views.ForgotPage, name="forgot"),
 ]
