@@ -23,7 +23,7 @@
         }
     </script>
     {% tailwind_css %}
-    /head>
+</head>
 
 <body class="bg-white dark:bg-gray-800"
     style="background-image: url('{% static 'img/preview_info3.jpg' %}'); background-repeat: no-repeat; background-size: cover;">
@@ -37,6 +37,14 @@
             <div class="bg-white p-16 rounded shadow-2xl w-2/3">
 
                 <h2 class="text-3xl font-bold mb-10 text-gray-800">Создать аккаунт</h2>
+                <style>
+                    input[type="text"],
+                    input[type="email"],
+                    input[type="tel"],
+                    input[type="password"] {
+                        color: #424242;
+                    }
+                </style>
                 <form class="space-y-5">
 
 
@@ -54,36 +62,42 @@
                             required>
                     </div>
 
-                    <div>
-                        <label class="block mb-1 font-bold text-gray-500">Номер телефона</label>
-                        <div class="relative mt-2.5">
-                            <div class="absolute inset-y-0 left-0 flex items-center">
-                                <label for="country" class="sr-only">Страна</label>
-                                <select id="country" name="country"
-                                    class="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-9 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm">
-                                    <option value="">Выберите страну</option>
-                                    <option value="7">RUS (+7)</option>
-                                    <option value="1">US / CA (+1)</option>
-                                    <option value="27">ZA (+27)</option>
-                                    <option value="41">CH (+41)</option>
-                                    <option value="996">KG (+996)</option>
-                                </select>
-                            </div>
-                            <input id="phone-number" type="tel" name="phone-number" autocomplete="tel"
-                                class="block w-full rounded-md border-0 px-3.5 py-2 pl-14 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        </div>
+                    <div class="flex items-center">
+                        <label class="block mb-1 font-bold text-gray-500 mr-3">Введите номер телефона</label>
+                        <select id="country" name="country"
+                            class="rounded-md border border-gray-200 p-1 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                            style="width: 150px;">
+                            <option value="">выберите страну </option>
+                            <option value="7">RUS (+7)</option>
+                            <option value="1">US / CA (+1)</option>
+                            <option value="27">ZA (+27)</option>
+                            <option value="41">CH (+41)</option>
+                            <option value="996">KG (+996)</option>
+                            <option value="850">KR (+850)</option>
+                        </select>
+                    </div>
+
+                    <div style="position: relative; margin-top: 1rem;">
+                        <input id="phone-number" type="tel" name="phone-number" autocomplete="tel"
+                            placeholder="Введите номер телефона"
+                            class="block w-full rounded-md border border-gray-200 p-2 pl-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <span id="selected-country"
+                            style="position: absolute; top: 50%; transform: translateY(-50%); left: 8px; color: #718096;"></span>
                     </div>
 
                     <script>
                         document.getElementById("country").addEventListener("change", function () {
                             var selectedCountryCode = document.getElementById("country").value;
                             if (selectedCountryCode) {
-                                document.getElementById("phone-number").placeholder = "+" + selectedCountryCode;
+                                document.getElementById("selected-country").textContent = "+" + selectedCountryCode;
                             } else {
-                                document.getElementById("phone-number").placeholder = "";
+                                document.getElementById("selected-country").textContent = "";
                             }
+                            document.getElementById("phone-number").placeholder = "Введите номер телефона";
                         });
                     </script>
+
+
 
                     <div>
                         <label class="block mb-1 font-bold text-gray-500">Пароль</label>
@@ -98,7 +112,7 @@
 
                     <div class="flex items-center">
                         <input type="checkbox" id="agree">
-                        <label for="agree" class="ml-2 text-gray-700 text-sm">Я согласен(-а) с условиями
+                        <label for="agree" class="ml-2 text-gray-700">Я согласен(-а) с условиями
                             пользовательского соглашения.</label>
                     </div>
 
@@ -110,18 +124,18 @@
                             <a href="ссылка_на_авторизацию_через_Google"
                                 style="text-decoration: none; margin-bottom: 10px;">
                                 <div
-                                    style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 100%;">
+                                    style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 305px;">
                                     <img src="https://s2.r29static.com/bin/entry/824/0,0,2000,1050/x/1902859/image.png"
                                         alt="Google" style="width: 50px; height: auto;">
-                                    <p style="margin-left: 10px;">Войти через Google</p>
+                                    <p style="margin-left: 10px; color: #424242">Войти через Google</p>
                                 </div>
                             </a>
                             <a href="ссылка_на_авторизацию_через_Facebook" style="text-decoration: none;">
                                 <div
-                                    style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 100%;">
+                                    style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 305px;">
                                     <img src="https://icon-library.com/images/small-facebook-icon-png/small-facebook-icon-png-21.jpg"
                                         alt="Facebook" style="width: 35px; height: auto;">
-                                    <p style="margin-left: 10px;">Войти через Facebook</p>
+                                    <p style="margin-left: 10px; color: #424242">Войти через Facebook</p>
                                 </div>
                         </div>
                         </a>
@@ -130,7 +144,7 @@
                     <div>
                         <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;" />
                         <a href="/login/authorized" style="color: #000;">Уже есть аккаунт? <span
-                                style="color: #3f8bd0; cursor: pointer;" onmouseover="this.style.color='#e74c3c'"
+                                style="color: #3f8bd0; cursor: pointer;" onmouseover="this.style.color='#0000CC'"
                                 onmouseout="this.style.color='#3f8bd0'">Войти</span></a>
                         <hr
                             style="width: 100%; border: none; height: 1px; background-color: #ccc; margin: 20px 0; position: relative;">
