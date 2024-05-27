@@ -1,0 +1,243 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en" id="themeToggle" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/KINOLIB/other/static/css/dist/styles.css">
+
+    {% tailwind_css %}
+</head>
+
+<body class="bg-white dark:bg-gray-900">
+<header class="bg-white dark:bg-gray-900">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 fixed w-[100%] bg-white dark:bg-gray-900 z-40 bg-opacity-85 dark:bg-opacity-85"
+         style="max-width: 100%;margin-top: -80px" aria-label="Global">
+        <div class="flex lg:flex-1">
+            <a href="{% url 'home' %}" class="-m-1.5 p-1.5 flex">
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
+                     alt="" style="margin-right: 20px">
+                <span class="justify-center align-middle align-center flex text-2xl font-bold text-gray-900 dark:text-white ">
+                      Kin
+                      <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: auto" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125Z"/>
+                      </svg>
+                      Lib
+                  </span>
+            </a>
+        </div>
+
+        <div class="flex lg:hidden">
+            <button type="button"
+                    class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-white"
+                    onclick="Menu.style.display = 'block'">
+                <span class="sr-only">Open main menu</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                     aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="hidden lg:flex lg:gap-x-12">
+
+            <a href="{% url 'home' %}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Главная</a>
+            <a href="{% url 'home' %}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Топ-10 за месяц</a>
+            <a href="{% url 'home' %}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Планы</a>
+            <a href="{% url 'home' %}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Контакты</a>
+        </div>
+
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+            <a style="margin-right: 2vh" class="hover:text-primary block transition dark:text-white md:px-4 p-2"
+               onclick="ToggleTheme()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="block w-6 h-6 dark:hidden">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-6 dark:block">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
+                </svg>
+            </a>
+
+            <a class="cursor-pointer text-sm font-semibold leading-6 text-gray-900 dark:text-white flex mr-[100px] dark:bg-gray-800 bg-gray-100 rounded-2xl p-2 pl-6 pr-6" onclick="showing.classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                 {{ user.username }}
+            </a>
+
+                        <ul id="showing"  class="hidden origin-top-right absolute top-full -translate-x-1/2 min-w-[240px] bg-gray-100 dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 border dark:border-gray-800 border-slate-200 p-2 rounded-lg shadow-xl [&amp;[x-cloak]]:hidden"  style="left: calc(100% - 150px)">
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/info/">
+                                    <div class="flex items-center justify-center dark:bg-gray-800 bg-white dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 18.375V5.625ZM21 9.375A.375.375 0 0 0 20.625 9h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5ZM10.875 18.75a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5ZM3.375 15h7.5a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375Zm0-3.75h7.5a.375.375 0 0 0 .375-.375v-1.5A.375.375 0 0 0 10.875 9h-7.5A.375.375 0 0 0 3 9.375v1.5c0 .207.168.375.375.375Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Данные</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/favorite/">
+                                    <div class="flex items-center justify-center bg-white dark:bg-gray-800 dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Профиль</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="mt-6 text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2 justify-center" style="background: linear-gradient(90deg, rgba(147, 112, 219, 1) 0%, rgba(109, 90, 197, 1) 100%)" href="/account/logout/">
+                                    <span class="whitespace-nowrap text-white" >Выйти</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+        </div>
+    </nav>
+
+
+    <div class="lg:hidden" aria-modal="true" style="display: none;" id="Menu">
+        <div class="fixed inset-0 z-10"></div>
+        <div style="z-index: 100;" class=" fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 bg-opacity-95 dark:bg-opacity-95">
+            <div class="flex items-center justify-between">
+                <a href="#" class="-m-1.5 p-1.5">
+                    <span class="sr-only">Your Company</span>
+                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600" alt="">
+                </a>
+                <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
+                        onclick="Menu.style.display = 'none' ">
+                    <span class="sr-only">Close menu</span>
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="mt-6 flow-root">
+                <div class="-my-6 divide-y divide-gray-500/10">
+                    <div class="space-y-2 py-6">
+
+                        <a href="#home"
+                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900  dark:text-white dark:hover:bg-gray-700  ">Главная</a>
+                        <a href="#top"
+                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900  dark:text-white dark:hover:bg-gray-700 ">Топ-10
+                            за месяц</a>
+                        <a href="#plans"
+                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900  dark:text-white dark:hover:bg-gray-700 ">Планы</a>
+
+                        <a href="#contact"
+                           class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900  dark:text-white dark:hover:bg-gray-700 ">Контакты</a>
+                    </div>
+                    <div class="py-6 flex">
+                        <a style="margin-top: 12px; margin-right: 2vh"
+                           class="hover:text-primary block transition dark:text-white md:px-4 " onclick="ToggleTheme()">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="block w-6 h-6 dark:hidden">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hidden w-6 h-6 dark:block">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/>
+                            </svg>
+
+                        </a>
+
+                         <a class="cursor-pointer text-sm font-semibold leading-6 text-gray-900 dark:text-white flex mr-[100px] dark:bg-gray-800 bg-gray-100 rounded-2xl p-2 pl-6 pr-6" onclick="showing2.classList.toggle('hidden')">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg> {{ user.username }}
+
+                        </a>
+
+                        <ul id="showing2"  class="hidden origin-top-right absolute -translate-x-1/2 min-w-[240px] bg-gray-100 dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 border dark:border-gray-800 border-slate-200 p-2 rounded-lg shadow-xl [&amp;[x-cloak]]:hidden"  style="left: calc(100% - 150px); margin-top: 70px">
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/info/">
+                                    <div class="flex items-center justify-center dark:bg-gray-800 bg-white dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 18.375V5.625ZM21 9.375A.375.375 0 0 0 20.625 9h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5ZM10.875 18.75a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5ZM3.375 15h7.5a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375Zm0-3.75h7.5a.375.375 0 0 0 .375-.375v-1.5A.375.375 0 0 0 10.875 9h-7.5A.375.375 0 0 0 3 9.375v1.5c0 .207.168.375.375.375Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Данные</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/favorite/">
+                                    <div class="flex items-center justify-center bg-white dark:bg-gray-800 dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Профиль</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="mt-6 text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2 justify-center" style="background: linear-gradient(90deg, rgba(147, 112, 219, 1) 0%, rgba(109, 90, 197, 1) 100%)" href="/account/logout/">
+                                    <span class="whitespace-nowrap text-white" >Выйти</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+
+<main class="mt-[80px]">
+
+<div class="isolate bg-white dark:bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
+  <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
+    <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+  </div>
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl text-gray-900 dark:text-white">Данные</h2>
+    <p class="mt-2 text-lg leading-8 text-gray-600 dark:text-slate-300">Личные данные от аккаунта</p>
+  </div>
+  <form method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20">
+      {% csrf_token %}
+      <input type="text" value="{{ user.id }}" name="id" hidden>
+    <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+      <div>
+        <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">Логин</label>
+        <div class="mt-2.5">
+          <input type="text" name="username" id="login" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white dark:bg-gray-800 dark:ring-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 opacity-60" value="{{ user.username }}" disabled>
+        </div>
+      </div>
+      <div>
+        <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">Пароль</label>
+        <div class="mt-2.5">
+          <input type="text" name="password" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white dark:bg-gray-800 dark:ring-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 opacity-60" placeholder="{{ user.password }}"  disabled>
+        </div>
+      </div>
+
+      <div class="sm:col-span-2">
+        <label for="email" class="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">Почта</label>
+        <div class="mt-2.5">
+          <input type="email" name="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 dark:text-white dark:bg-gray-800 dark:ring-0 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 opacity-60" value="{{ user.email }}" disabled>
+        </div>
+      </div>
+
+    <div class="mt-10 flex justify-center">
+      <button id="edit" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Редактировать</button>
+      <button type="submit" id="success" class="ml-6 block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 hidden">Подтвердить</button>
+
+    </div>
+
+    </div>
+  </form>
+</div>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/info.js' %}"></script>
+</main>

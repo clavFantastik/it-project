@@ -5,157 +5,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/KINOLIB/other/static/css/dist/styles.css">
-    <script>
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById("passwordInput");
-            var eyeIcon = document.getElementById("eyeIcon");
-
-            if (passwordInput.type === "password") {
-                passwordInput.type = "text";
-                eyeIcon.classList.remove("fa-eye-slash");
-                eyeIcon.classList.add("fa-eye");
-            } else {
-                passwordInput.type = "password";
-                eyeIcon.classList.remove("fa-eye");
-                eyeIcon.classList.add("fa-eye-slash");
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
     {% tailwind_css %}
 </head>
 
-<body class="bg-white dark:bg-gray-800"
-    style="background-image: url('{% static 'img/preview_info3.jpg' %}'); background-repeat: no-repeat; background-size: cover;">
-    <header class="container mx-auto ">
-
-    </header>
-
-    <main class="container mx-auto py-big">
-        <div class="min-h-screen flex items-center justify-center">
-
-            <div class="bg-white p-16 rounded shadow-2xl w-2/3">
-
-                <h2 class="text-3xl font-bold mb-10 text-gray-800">Создать аккаунт</h2>
-                <style>
-                    input[type="text"],
-                    input[type="email"],
-                    input[type="tel"],
-                    input[type="password"] {
-                        color: #424242;
-                    }
-                </style>
-                <form class="space-y-5">
+<body class="bg-white dark:bg-gray-900 "
+      style="background-image: url('{% static 'img/preview_info2.png' %}'); background-repeat: no-repeat; background-size: cover;">
 
 
-                    <div>
-                        <label class="block mb-1 font-bold text-gray-500">Имя</label>
-                        <input type="text"
-                            class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-900"
-                            required>
+<main class="container mx-auto py-big bg-opacity-90">
+    <div class="min-h-screen flex items-center justify-center dark:bg-opacity-95">
+
+        <div class="bg-white p-16 rounded shadow-2xl w-2/3 dark:bg-gray-900 dark:bg-opacity-95">
+
+            <h2 class="text-3xl font-bold mb-10 text-gray-700 dark:text-gray-300">Создать аккаунт</h2>
+
+            <form class="space-y-5" method="post">
+                {% csrf_token %}
+
+                <div>
+                    <label class="block mb-1 font-bold text-gray-500 dark:text-gray-300">Логин <span
+                            class="tooltip">*</span></label>
+                    <input type="text"
+                           class="h-12 dark:text-white w-full  border-gray-200 dark:border-gray-600 dark:ring-2 p-3 rounded outline-none dark:focus:ring-gray-800  focus:ring-4 focus:outline-none focus:ring-gray-100 focus:border-neutral-400 dark:bg-gray-800"
+                           style="box-shadow: 0 0 60px rgba(147,112,219,.34);line-height: 2rem;"
+                           name="username"
+                           required>
+                </div>
+                <div>
+                    <label class="block mb-1 font-bold text-gray-500 dark:text-gray-300">Пароль <span
+                            class="tooltip">*</span></label>
+                    <div style="position: relative;">
+                        <input id="passwordInput" type="password"
+                               class="h-12 dark:text-white w-full border-gray-200 dark:border-gray-600 dark:ring-2 p-3 rounded outline-none dark:focus:ring-gray-800  focus:ring-4 focus:outline-none focus:ring-gray-100 focus:border-neutral-400 dark:bg-gray-800"
+                               style="box-shadow: 0 0 60px rgba(147,112,219,.34);line-height: 2rem;"
+                               name="password"
+
+                               required>
                     </div>
+                </div>
 
-                    <div>
-                        <label class="block mb-1 font-bold text-gray-500">Почта</label>
-                        <input type="email"
-                            class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-900"
-                            required>
-                    </div>
+                <div>
+                    <label class="block mb-1 font-bold text-gray-500 dark:text-gray-300">Почта <span
+                            class="tooltip">*</span></label>
+                    <input type="email"
+                           class="h-12 dark:focus:ring-gray-800 dark:ring-2 focus:ring-4 focus:outline-none focus:ring-gray-100 block w-full z-20 text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:border-neutral-400  dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white "
+                           style="box-shadow: 0 0 60px rgba(147,112,219,.34);"
+                           name="email"
+                           required>
+                </div>
 
-                    <div class="flex items-center">
-                        <label class="block mb-1 font-bold text-gray-500 mr-3">Введите номер телефона</label>
-                        <select id="country" name="country"
-                            class="rounded-md border border-gray-200 p-1 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
-                            style="width: 150px;">
-                            <option value="">выберите страну </option>
-                            <option value="7">RUS (+7)</option>
-                            <option value="1">US / CA (+1)</option>
-                            <option value="27">ZA (+27)</option>
-                            <option value="41">CH (+41)</option>
-                            <option value="996">KG (+996)</option>
-                            <option value="850">KR (+850)</option>
-                        </select>
-                    </div>
+                <div>
+                    <label class="block mb-1 font-bold text-gray-500 dark:text-gray-300">Номер телефона</label>
+                    <div class="relative mt-2.5 rounded-2xl h-12" style="box-shadow: 0 0 60px rgba(147,112,219,.34);">
+                        <div>
 
-                    <div style="position: relative; margin-top: 1rem;">
-                        <input id="phone-number" type="tel" name="phone-number" autocomplete="tel"
-                            placeholder="Введите номер телефона"
-                            class="block w-full rounded-md border border-gray-200 p-2 pl-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                        <span id="selected-country"
-                            style="position: absolute; top: 50%; transform: translateY(-50%); left: 8px; color: #718096;"></span>
-                    </div>
+                            <form class="max-w-sm mx-auto h-12">
+                                <div class="flex items-center">
+                                    <button id="dropdown-phone-button" data-dropdown-toggle="dropdown-phone" class="h-12 flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-800 dark:hover:bg-gray-600 dark:focus:ring-gray-800 dark:text-white dark:border-gray-600" type="button">
+                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#f0f0f0" r="256"/><path d="m496.077 345.043c10.291-27.733 15.923-57.729 15.923-89.043s-5.632-61.31-15.923-89.043h-480.154c-10.29 27.733-15.923 57.729-15.923 89.043s5.633 61.31 15.923 89.043l240.077 22.261z" fill="#0052b4"/><path d="m256 512c110.071 0 203.906-69.472 240.077-166.957h-480.154c36.171 97.485 130.006 166.957 240.077 166.957z" fill="#d80027"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                        +7
+                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>
+                                    </button>
+                                    <div id="dropdown-phone"
+                                         class="absolute z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-800">
+                                        <ul class="py-2 text-sm text-gray-800 dark:text-gray-200" aria-labelledby="dropdown-phone-button">
+                                            <li>
+                                                <button type="button"
+                                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        onclick="changeNumber(this)" role="menuitem">
+                                                    <span class="inline-flex items-center">
+                                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#f0f0f0" r="256"/><path d="m496.077 345.043c10.291-27.733 15.923-57.729 15.923-89.043s-5.632-61.31-15.923-89.043h-480.154c-10.29 27.733-15.923 57.729-15.923 89.043s5.633 61.31 15.923 89.043l240.077 22.261z" fill="#0052b4"/><path d="m256 512c110.071 0 203.906-69.472 240.077-166.957h-480.154c36.171 97.485 130.006 166.957 240.077 166.957z" fill="#d80027"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                                        Россия, +7
+                                                    </span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button type="button"
+                                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        onclick="changeNumber(this)" role="menuitem">
+                                                    <span class="inline-flex items-center">
+                                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#338af3" r="256"/><path d="m400.696 258.783h-289.392c0 19.979 17.401 36.174 37.378 36.174h-1.204c0 19.979 16.195 36.174 36.174 36.174 0 19.979 16.195 36.174 36.174 36.174h72.348c19.979 0 36.174-16.195 36.174-36.174 19.979 0 36.174-16.195 36.174-36.174h-1.204c19.975 0 37.378-16.195 37.378-36.174z" fill="#ffda44"/><path d="m356.174 211.478c0 55.324-44.85 100.174-100.174 100.174-55.325 0-100.174-44.85-100.174-100.174" fill="#338af3"/><path d="m332.515 211.478-31.265 14.707 16.649 30.28-33.95-6.495-4.302 34.296-23.647-25.225-23.648 25.225-4.301-34.296-33.95 6.493 16.648-30.279-31.264-14.706 31.265-14.706-16.649-30.279 33.949 6.494 4.303-34.296 23.647 25.225 23.648-25.225 4.301 34.296 33.951-6.494-16.649 30.28z" fill="#ffda44"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                                        Казахстан, +7
+                                                    </span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button type="button"
+                                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        onclick="changeNumber(this)" role="menuitem">
+                                                    <span class="inline-flex items-center">
+                                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#fcfcfc" r="256"/><g fill="#a2001d"><path d="m105.739 237.449-27.826-50.483 27.826-49.691 27.826 49.691z"/><path d="m50.087 237.449-27.826-50.483 27.826-49.691 27.826 49.691z"/><path d="m105.739 374.725-27.826-50.483 27.826-49.691 27.826 49.691z"/><path d="m50.087 374.725-27.826-50.483 27.826-49.691 27.826 49.691z"/><path d="m133.565 49.692-7.878-14.068c-14.13 8.372-27.383 18.065-39.594 28.909l19.646 35.641z"/><path d="m105.739 411.826-19.854 35.456c12.2 10.858 25.444 20.566 39.568 28.955l8.113-14.719z"/></g><path d="m155.826 322.783v168.863c30.769 13.097 64.622 20.354 100.174 20.354 110.071 0 203.906-69.472 240.077-166.957z" fill="#6da544"/><path d="m496.077 345.043c10.291-27.733 15.923-57.729 15.923-89.043 0-141.384-114.616-256-256-256-35.549 0-69.405 7.253-100.174 20.348v324.696h340.251z" fill="#a2001d"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                                        Беларусь, +375
+                                                    </span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button type="button"
+                                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        onclick="changeNumber(this)" role="menuitem">
+                                                    <span class="inline-flex items-center">
+                                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m512 256c0-31.314-5.632-61.311-15.923-89.043l-240.077-11.131-240.077 11.13c-10.29 27.733-15.923 57.73-15.923 89.044s5.633 61.311 15.923 89.043l240.077 11.131 240.077-11.13c10.291-27.733 15.923-57.73 15.923-89.044z" fill="#0052b4"/><path d="m256 512c110.071 0 203.906-69.472 240.077-166.957h-480.154c36.171 97.485 130.006 166.957 240.077 166.957z" fill="#ff9811"/><path d="m15.923 166.957h480.155c-36.172-97.485-130.007-166.957-240.078-166.957s-203.906 69.472-240.077 166.957z" fill="#d80027"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                                        Армения, +374
+                                                    </span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button type="button"
+                                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        onclick="changeNumber(this)" role="menuitem">
+                                                    <span class="inline-flex items-center">
+                                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m512 256c0-31.314-5.632-61.311-15.923-89.043l-240.077-11.131-240.077 11.13c-10.29 27.733-15.923 57.73-15.923 89.044s5.633 61.311 15.923 89.043l240.077 11.131 240.077-11.13c10.291-27.733 15.923-57.73 15.923-89.044z" fill="#d80027"/><path d="m256 512c110.071 0 203.906-69.472 240.077-166.957h-480.154c36.171 97.485 130.006 166.957 240.077 166.957z" fill="#6da544"/><path d="m15.923 166.957h480.155c-36.172-97.485-130.007-166.957-240.078-166.957s-203.906 69.472-240.077 166.957z" fill="#338af3"/><g fill="#f0f0f0"><path d="m261.565 328.348c-39.956 0-72.348-32.392-72.348-72.348s32.392-72.348 72.348-72.348c12.458 0 24.181 3.15 34.415 8.696-16.056-15.701-38.012-25.392-62.241-25.392-49.178 0-89.043 39.866-89.043 89.043s39.866 89.043 89.043 89.043c24.23 0 46.186-9.691 62.241-25.392-10.234 5.548-21.957 8.698-34.415 8.698z"/><path d="m317.217 205.913 9.583 26.951 25.834-12.282-12.281 25.834 26.951 9.584-26.951 9.584 12.281 25.834-25.834-12.282-9.583 26.951-9.582-26.951-25.835 12.282 12.282-25.834-26.952-9.584 26.952-9.584-12.282-25.834 25.835 12.282z"/></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                                        Азербайджан, +994
 
-                    <script>
-                        document.getElementById("country").addEventListener("change", function () {
-                            var selectedCountryCode = document.getElementById("country").value;
-                            if (selectedCountryCode) {
-                                document.getElementById("selected-country").textContent = "+" + selectedCountryCode;
-                            } else {
-                                document.getElementById("selected-country").textContent = "";
-                            }
-                            document.getElementById("phone-number").placeholder = "Введите номер телефона";
-                        });
-                    </script>
+                                                    </span>
+                                                </button>
+                                            </li>
+
+                                            <li>
+                                                <button type="button"
+                                                        class="inline-flex w-full px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                        onclick="changeNumber(this)" role="menuitem">
+                                                    <span class="inline-flex items-center">
+                                                        <svg class="w-4 h-4 me-4" enable-background="new 0 0 512 512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><circle cx="256" cy="256" fill="#f0f0f0" r="256"/><g fill="#a2001d"><path d="m256 0c-118.279 0-217.805 80.221-247.181 189.217h494.363c-29.377-108.996-128.903-189.217-247.182-189.217z"/><path d="m256 512c118.279 0 217.805-80.221 247.181-189.217h-494.362c29.376 108.995 128.902 189.217 247.181 189.217z"/></g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg>
+                                                        Латвия, +371
+                                                    </span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="relative w-full">
+                                        <input type="text" id="phone-input"
+                                               class="h-12 block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-0 border border-gray-300 focus:border-neutral-400 dark:bg-gray-800 dark:border-s-gray-800  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-800  focus:ring-4 focus:outline-none focus:ring-gray-100 "
+                                               pattern="[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}" placeholder="999-999-99-99"
+                                               />
+                                    </div>
+                                </div>
+                            </form>
 
 
-
-                    <div>
-                        <label class="block mb-1 font-bold text-gray-500">Пароль</label>
-                        <div style="position: relative;">
-                            <input id="passwordInput" type="password"
-                                class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-900"
-                                required>
-                            <i id="eyeIcon" onclick="togglePasswordVisibility()" class="fa fa-eye-slash"
-                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                         </div>
                     </div>
 
-                    <div class="flex items-center">
-                        <input type="checkbox" id="agree">
-                        <label for="agree" class="ml-2 text-gray-700">Я согласен(-а) с условиями
+
+                    <div class="flex items-center mt-8 mb-8">
+                        <input type="checkbox" id="agree" class="bg-white dark:bg-gray-800 dark:border-gray-600 ">
+                        <label for="agree" class="ml-2 text-gray-800 text-sm dark:text-gray-300">Я согласен(-а) с
+                            условиями
                             пользовательского соглашения.</label>
                     </div>
 
                     <button
-                        class="block w-full bg-gray-400 hover:bg-gray-500 p-4 rounded text-gray-800 hover:text-gray-900 transition duration-300">Зарегистрироваться</button>
+                            class="block w-full bg-gray-400 hover:bg-gray-500 p-4 rounded text-gray-700 hover:text-white transition duration-300 button dark:text-white dark:hover:text-gray-700">
+                        Зарегистрироваться
+                    </button>
                     <div style="text-align: center; margin-top: 20px;">
-                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;" />
-                        <div style="display: flex; flex-direction: column; align-items: center;">
-                            <a href="ссылка_на_авторизацию_через_Google"
-                                style="text-decoration: none; margin-bottom: 10px;">
-                                <div
-                                    style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 305px;">
-                                    <img src="https://s2.r29static.com/bin/entry/824/0,0,2000,1050/x/1902859/image.png"
-                                        alt="Google" style="width: 50px; height: auto;">
-                                    <p style="margin-left: 10px; color: #424242">Войти через Google</p>
+                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;"/>
+                        <div class="flex justify-evenly w-[250px]" style="margin: auto">
+                            <a href="ссылка_на_авторизацию_через_Facebook">
+                                <div class="border-gray-400 border-2"
+                                        style="  border-radius: 10px; padding: 10px; width: 100%;">
+                                    <img src="https://e7.pngegg.com/pngimages/299/774/png-clipart-google-logo-google-search-search-engine-optimization-google-s-google-google-logo-google-thumbnail.png"
+                                         class="w-8 h-8"
+                                         alt="Facebook">
+
                                 </div>
                             </a>
-                            <a href="ссылка_на_авторизацию_через_Facebook" style="text-decoration: none;">
-                                <div
-                                    style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 305px;">
-                                    <img src="https://icon-library.com/images/small-facebook-icon-png/small-facebook-icon-png-21.jpg"
-                                        alt="Facebook" style="width: 35px; height: auto;">
-                                    <p style="margin-left: 10px; color: #424242">Войти через Facebook</p>
+                            <a href="ссылка_на_авторизацию_через_Facebook">
+                                <div class="border-gray-400 border-2"
+                                        style=" border-radius: 10px; padding: 10px; width: 100%;">
+                                    <img src="{% static 'img/git.png' %}" class="w-8 h-8"
+                                         alt="Facebook"
+                                    >
+
                                 </div>
+                            </a>
+                            <a href="ссылка_на_авторизацию_через_Facebook">
+                                <div style=" border-radius: 10px; padding: 10px; width: 100%;"
+                                     class="border-gray-400 border-2">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/768px-Facebook_Logo_%282019%29.png"
+                                         alt="Facebook" class="w-8 h-8">
+
+                                </div>
+                            </a>
                         </div>
-                        </a>
+
 
                     </div>
                     <div>
-                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;" />
-                        <a href="/login/authorized" style="color: #000;">Уже есть аккаунт? <span
-                                style="color: #3f8bd0; cursor: pointer;" onmouseover="this.style.color='#0000CC'"
+                        <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;"/>
+                        <a class="text-gray-900 dark:text-gray-300" href="/account/login/">Уже есть аккаунт? <span
+                                style="color: #3f8bd0; cursor: pointer;" onmouseover="this.style.color='#e74c3c'"
                                 onmouseout="this.style.color='#3f8bd0'">Войти</span></a>
-                        <hr
-                            style="width: 100%; border: none; height: 1px; background-color: #ccc; margin: 20px 0; position: relative;">
+
                     </div>
 
-                </form>
-            </div>
+
+                </div>
+            </form>
 
         </div>
-    </main>
+    </div>
+
+</main>
 
 </body>
-
+<script>
+    function changeNumber(el) {
+        document.getElementById('dropdown-phone-button').innerHTML = el.innerHTML.split('</svg>')[0] + '</svg>' + el.innerHTML.split(', ')[1] + '<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/></svg>';
+    }
+</script>
+<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 </html>
