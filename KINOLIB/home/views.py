@@ -166,3 +166,5 @@ def reload(request):
         Product.objects.create(title=book['title'], description=book['description'], year=int(book['published_date'].split('-')[0]), rating=book['rating'], img=book['cover_url'], type='Книга')
 
     return redirect('/')
+
+
