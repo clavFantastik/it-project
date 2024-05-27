@@ -1,6 +1,7 @@
 {
   "name": "other",
   "version": "3.8.0",
+  "main": "dist/cjs",
   "description": "",
   "scripts": {
     "start": "nodemon --watch ./other/static_src/src -e css --exec 'npm run dev && node server.js'",

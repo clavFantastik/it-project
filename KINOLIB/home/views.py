@@ -159,8 +159,8 @@ def fetch_and_display_books():
 
 
 def reload(request):
-    for i, info in enumerate(movies_data()):
-        Product.objects.create(title=info['title'],description=info['plot'], year=int(info['year']), rating=info['rating'], img=info['cover_url'], type='Фильм')
+    # for i, info in enumerate(movies_data()):
+    #     Product.objects.create(title=info['title'],description=info['plot'], year=int(info['year']), rating=info['rating'], img=info['cover_url'], type='Фильм')
 
     for i, book in enumerate(fetch_and_display_books()):
         Product.objects.create(title=book['title'], description=book['description'], year=int(book['published_date'].split('-')[0]), rating=book['rating'], img=book['cover_url'], type='Книга')
