@@ -7,9 +7,6 @@ from .forms import SignInForm
 from django.contrib.auth.forms import UserCreationForm
 
 
-def FilmPage(request):
-    return render(request, "film.html")
-
 def SignUpPage(request):
 
     if request.method == 'POST':
@@ -33,7 +30,6 @@ def SignUpPage(request):
 
 
 def LogInPage(request):
-
 
     if request.method == 'POST':
         username = request.POST.get('username')
