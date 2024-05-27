@@ -1,16 +1,36 @@
 version: '3'
 
+x-app: &default-app
+  build:
+    context: "."
+  volumes:
+    - ./KINOLIB:/KINOLIB
+  restart: "unless-stopped"
+
+
 services:
   web:
-    build: .
+    <<: *default-app
     command: >
       sh -c "echo  &&
              echo Наш сайт по ссылке http://localhost:8000/ &&
              echo  &&
-             python manage.py runserver 0.0.0.0:8000 &&
-             cd ./other/static_src &&
-             npm run dev"
+             python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
-    volumes:
-      - ./KINOLIB:/KINOLIB
+
+  tailwind:
+    <<: *default-app
+    command:  >
+      sh -c "cd ./other/static_src &&
+             npm i &&
+             npm run dev
+             "
+
+    
+    
+    restart: always
+    tty: true
+

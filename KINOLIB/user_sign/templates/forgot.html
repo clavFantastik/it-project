@@ -1,0 +1,84 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/KINOLIB/other/static/css/dist/styles.css">
+    {% tailwind_css %}
+</head>
+
+<body class="bg-white dark:bg-gray-800"
+    style="background-image: url('{% static 'img/preview_info3.jpg' %}'); background-repeat: no-repeat; background-size: cover;">
+
+    <header class="container mx-auto ">
+
+    </header>
+
+    <main class="container mx-auto py-big">
+
+        <div class="min-h-screen flex items-center justify-center">
+
+            <div class="bg-white p-16 rounded shadow-2xl w-2/3">
+
+                <h2 class="text-3xl font-bold mb-10 text-gray-800">Забыли пароль?</h2>
+                <style>
+                    input[type="text"] {
+                        color: #424242;
+                    }
+                </style>
+                <form class="space-y-5">
+
+
+                    <div>
+                        <label class="block mb-1 font-bold text-gray-500">
+                            Введите имя пользователя или почту <span class="tooltip">*</span>
+                        </label>
+                        <input type="text"
+                            class="w-full border-2 border-gray-200 p-3 rounded outline-none focus:border-blue-900"
+                            required>
+                    </div>
+
+
+                    <div>
+                        <button
+                            class="block w-full bg-gray-400 hover:bg-gray-500 p-4 rounded text-gray-800 hover:text-gray-900 transition duration-300">Отправить
+                            инструкцию</button>
+                        <div style="text-align: center; margin-top: 20px;">
+                            <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;" />
+                            <div style="display: flex; flex-direction: column; align-items: center;">
+                                <a href="ссылка_на_авторизацию_через_Google"
+                                    style="text-decoration: none; margin-bottom: 10px;">
+                                    <div
+                                        style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 305px;">
+                                        <img src="https://s2.r29static.com/bin/entry/824/0,0,2000,1050/x/1902859/image.png"
+                                            alt="Google" style="width: 50px; height: auto;">
+                                        <p style="margin-left: 10px; color: #424242">Войти через Google</p>
+                                    </div>
+                                </a>
+                                <a href="ссылка_на_авторизацию_через_Facebook" style="text-decoration: none;">
+                                    <div
+                                        style="display: flex; align-items: center; border: 1px solid #ccc; border-radius: 10px; padding: 10px; width: 305px;">
+                                        <img src="https://icon-library.com/images/small-facebook-icon-png/small-facebook-icon-png-21.jpg"
+                                            alt="Facebook" style="width: 35px; height: auto;">
+                                        <p style="margin-left: 10px; color: #424242">Войти через Facebook</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <hr style="border: none; height: 1px; background-color: #ccc; margin: 20px 0;" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <a href="/login" style="color: #000;">Отменить <span style="color: #3f8bd0; cursor: pointer;"
+                                onmouseover="this.style.color='#e74c3c'" onmouseout="this.style.color='#3f8bd0'">Нажмите
+                                здесь</span></a>
+                        <hr
+                            style="width: 100%; border: none; height: 1px; background-color: #ccc; margin: 20px 0; position: relative;">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>

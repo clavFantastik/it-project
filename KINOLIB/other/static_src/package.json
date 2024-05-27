@@ -3,11 +3,11 @@
   "version": "3.8.0",
   "description": "",
   "scripts": {
-    "start": "npm run dev",
+    "start": "nodemon --watch ./other/static_src/src -e css --exec 'npm run dev && node server.js'",
     "build": "npm run build:clean && npm run build:tailwind",
     "build:clean": "rimraf ../static/css/dist",
     "build:tailwind": "cross-env NODE_ENV=production tailwindcss --postcss -i ./src/styles.css -o ../static/css/dist/styles.css --minify",
-    "dev": "cross-env NODE_ENV=development tailwindcss --postcss -i ./src/styles.css -o ../static/css/dist/styles.css -w",
+    "dev": "cross-env NODE_ENV=dev tailwindcss --postcss -i ./src/styles.css -o ../static/css/dist/styles.css --poll --watch",
     "tailwindcss": "node ./node_modules/tailwindcss/lib/cli.js"
   },
   "keywords": [],
@@ -23,6 +23,7 @@
     "postcss-nested": "^6.0.1",
     "postcss-simple-vars": "^7.0.1",
     "rimraf": "^5.0.5",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "nodemon": "^2.0.7"
   }
 }

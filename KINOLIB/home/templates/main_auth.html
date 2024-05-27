@@ -20,7 +20,7 @@
 
 <header class="bg-white dark:bg-gray-900">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 fixed w-[100%] bg-white dark:bg-gray-900 z-40 bg-opacity-85 dark:bg-opacity-85"
-         style="max-width: 100%; margin-top: -80px" aria-label="Global">
+         style="max-width: 100%; margin-top: -160px" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="#" class="-m-1.5 p-1.5 flex">
                 <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=600"
@@ -57,7 +57,7 @@
         </div>
 
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a style="margin-right: 2vh" class="hover:text-primary block transition dark:text-white md:px-4 "
+            <a style="margin-right: 2vh" class="hover:text-primary block transition dark:text-white md:px-4 p-2"
                onclick="ToggleTheme()">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="block w-6 h-6 dark:hidden">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/>
@@ -67,11 +67,46 @@
                 </svg>
             </a>
 
-            <a href="/account/login/" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white flex mr-[100px]">Войти 
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="margin-top: 4px; margin-left: 4px">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/>
-                </svg>
+            <a class="cursor-pointer text-sm font-semibold leading-6 text-gray-900 dark:text-white flex mr-[100px] dark:bg-gray-800 bg-gray-100 rounded-2xl p-2 pl-6 pr-6" onclick="showing.classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+ 
+{{ user.username }}
+
             </a>
+
+                        <ul id="showing"  class="hidden origin-top-right absolute top-full -translate-x-1/2 min-w-[240px] bg-gray-100 dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 border dark:border-gray-800 border-slate-200 p-2 rounded-lg shadow-xl [&amp;[x-cloak]]:hidden"  style="left: calc(100% - 150px)">
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/info/">
+                                    <div class="flex items-center justify-center dark:bg-gray-800 bg-white dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 18.375V5.625ZM21 9.375A.375.375 0 0 0 20.625 9h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5ZM10.875 18.75a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5ZM3.375 15h7.5a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375Zm0-3.75h7.5a.375.375 0 0 0 .375-.375v-1.5A.375.375 0 0 0 10.875 9h-7.5A.375.375 0 0 0 3 9.375v1.5c0 .207.168.375.375.375Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Данные</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/favorite/">
+                                    <div class="flex items-center justify-center bg-white dark:bg-gray-800 dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Профиль</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="mt-6 text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2 justify-center" style="background: linear-gradient(90deg, rgba(147, 112, 219, 1) 0%, rgba(109, 90, 197, 1) 100%)" href="/account/logout/">
+                                    <span class="whitespace-nowrap text-white" >Выйти</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
         </div>
     </nav>
 
@@ -120,14 +155,43 @@
                             </svg>
 
                         </a>
+                        <a class="cursor-pointer text-sm font-semibold leading-6 text-gray-900 dark:text-white flex mr-[100px] dark:bg-gray-800 bg-gray-100 rounded-2xl p-2 pl-6 pr-6" onclick="showing2.classList.toggle('hidden')">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                            </svg> {{ user.username }}
 
-                        <a href="/account/login/"
-                           class="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 flex ">Войти
-                             
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="margin-top: 7px;">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/>
-                            </svg>
                         </a>
+
+                        <ul id="showing2"  class="hidden origin-top-right absolute -translate-x-1/2 min-w-[240px] bg-gray-100 dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 border dark:border-gray-800 border-slate-200 p-2 rounded-lg shadow-xl [&amp;[x-cloak]]:hidden"  style="left: calc(100% - 150px); margin-top: 70px">
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/info/">
+                                    <div class="flex items-center justify-center dark:bg-gray-800 bg-white dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M1.5 5.625c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v12.75c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 18.375V5.625ZM21 9.375A.375.375 0 0 0 20.625 9h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5Zm0 3.75a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5a.375.375 0 0 0 .375-.375v-1.5ZM10.875 18.75a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375h7.5ZM3.375 15h7.5a.375.375 0 0 0 .375-.375v-1.5a.375.375 0 0 0-.375-.375h-7.5a.375.375 0 0 0-.375.375v1.5c0 .207.168.375.375.375Zm0-3.75h7.5a.375.375 0 0 0 .375-.375v-1.5A.375.375 0 0 0 10.875 9h-7.5A.375.375 0 0 0 3 9.375v1.5c0 .207.168.375.375.375Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Данные</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2" href="/profile/favorite/">
+                                    <div class="flex items-center justify-center bg-white dark:bg-gray-800 dark:border-0 border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 fill-indigo-500">
+                                            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <span class="whitespace-nowrap dark:text-white text-gray-800">Профиль</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="mt-6 text-slate-800 hover:bg-slate-50 dark:hover:bg-gray-800 flex items-center p-2 justify-center" style="background: linear-gradient(90deg, rgba(147, 112, 219, 1) 0%, rgba(109, 90, 197, 1) 100%)" href="/account/logout/">
+                                    <span class="whitespace-nowrap text-white" >Выйти</span>
+                                </a>
+                            </li>
+
+                        </ul>
 
                     </div>
                 </div>
@@ -138,7 +202,7 @@
 </header>
 
 <main class="space-y-40 mb-40">
-    <div class="relative" id="home" style="margin-top: 80px">
+    <div class="relative" id="home">
         <div aria-hidden="true"
              class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20 bg-fixed bg-center bg-no-repeat"
              style="background-image: url('{% static 'img/preview_info3.jpg' %}')">
@@ -146,74 +210,7 @@
             <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
         </div>
 
-        <div class="max-w-8xl mx-auto px-6 md:px-12 xl:px-6">
-            <div class="relative pt-36 ml-auto">
-                <div class="lg:w-2/3 text-center mx-auto">
-                    <h1 class="text-gray-900 dark:text-white font-bold text-4xl md:text-5xl xl:text-6xl">Поменяй свое
-                        представление о кино и книгах вместе с нами.</h1>
-                    <p class="mt-8 text-gray-700 dark:text-gray-300" style="font-weight: bolder">Открой для себя самый
-                        лучший сервис по просмотру кино и чтению книг!</p>
-                    <div class="mt-16 flex flex-wrap justify-center gap-y-4 gap-x-6">
-                        <a href="/account/login/" style="min-height: 60px;min-width: 150px"
-                           class="button relative flex h-11 w-full items-center justify-center px-6 hover:scale-105 active:duration-75 active:scale-95 before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
-                                <span class="relative text-base font-semibold text-white dark:text-white flex"> Перейти 
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/>
-                                    </svg>
-                                </span>
-                        </a>
 
-                        <a href="#" style="min-height: 60px;min-width: 150px"
-                           class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:border before:border-transparent before:bg-white/80 before:bg-gradient-to-b before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max">
-                            <span class="relative text-base font-semibold text-primary dark:text-white">Прочее</span>
-                        </a>
-                    </div>
-
-                    <div class="hidden py-8 mt-16 sm:flex justify-between"
-                         style="margin-top: 150px; padding-bottom: 100px; opacity: 0.9; border-top: 2px solid rgba(147,112,219,0.4)">
-                        <div class="text-left "
-                             style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
-                            <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
-                                <video class="w-12 h-12" preload="none"
-                                       style="filter: brightness(100%);mix-blend-mode: multiply;background: transparent  url('https://cdn-icons-png.flaticon.com/512/11679/11679001.png')"
-                                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
-                                    <source src="https://cdn-icons-mp4.flaticon.com/512/15579/15579004.mp4"
-                                            type="video/mp4">
-                                </video>
-                            </h6>
-                            <p class="mt-2  text-gray-600" style=" font-weight: bold">Все бесплатно</p>
-                        </div>
-
-                        <div class="text-left"
-                             style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
-                            <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
-                                <video class="w-12 h-12" preload="none"
-                                       style="mix-blend-mode: multiply;background: transparent  url('https://cdn-icons-png.flaticon.com/512/13373/13373711.png')"
-                                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
-                                    <source src="https://cdn-icons-mp4.flaticon.com/512/12146/12146069.mp4"
-                                            type="video/mp4">
-                                </video>
-                            </h6>
-                            <p class="mt-2  text-gray-600" style=" font-weight: bold">Быстрый отклик</p>
-                        </div>
-
-                        <div class="text-left"
-                             style="opacity: 0.9;border-radius: 15px; padding: 20px;background: linear-gradient(90deg, #aea4e3, #d3ffe8);box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;">
-                            <h6 class="text-lg font-semibold text-gray-700 dark:text-white flex justify-center">
-                                <video class="w-12 h-12" preload="none"
-                                       style="mix-blend-mode: multiply ;background: transparent  url('https://cdn-icons-png.flaticon.com/512/11784/11784407.png') 50% 50%"
-                                       autoplay="autoplay" loop="true" muted="muted" playsinline="">
-                                    <source src="https://cdn-icons-mp4.flaticon.com/512/11784/11784407.mp4"
-                                            type="video/mp4">
-                                </video>
-                            </h6>
-                            <p class="mt-2 text-gray-600" style=" font-weight: bold">Обширная бд</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div id="top">
         <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
@@ -226,11 +223,11 @@
                       Топ-10 за месяц
                 </h2>
                 <!-- Slides -->
-                <div class="swiper" style="width: 100%; padding-left: 30px; padding-right: 30px; margin-top: 50px; height: 40vh">
-                    <div class="swiper-wrapper" style="width: 100%">
+                <div class="swiper" style="width: 100%; padding-left: 30px; padding-right: 30px; margin-top: 50px;height: 40vh ">
+                    <div class="swiper-wrapper" style="width: 100%;">
                         {% for el in products %}
                             {% if forloop.counter < 10 %}
-                        <div class="swiper-slide text-gray-900 dark:text-white" style="height: 100%; width: 250px"><img src="{{ el.img }}" alt="" style="height: 100%; width: 100%"></div>
+                        <a href="page/{{ el.id }}" class="swiper-slide text-gray-900 dark:text-white " style="height: 100%; width: 250px"><img src="{{ el.img }}" alt="" style="height: 100%; width: 100%" ></a>
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -244,6 +241,84 @@
                     <!-- If we need scrollbar -->
                 </div>
 
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div id="top">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+            <div class="mb-12 space-y-2 text-center">
+                <h2 class="text-3xl font-bold text-gray-800 md:text-4xl dark:text-white flex"
+                    style="color: rgba(147,112,219,1); text-align: left">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10">
+                        <path fill-rule="evenodd" d="M12.963 2.286a.75.75 0 0 0-1.071-.136 9.742 9.742 0 0 0-3.539 6.176 7.547 7.547 0 0 1-1.705-1.715.75.75 0 0 0-1.152-.082A9 9 0 1 0 15.68 4.534a7.46 7.46 0 0 1-2.717-2.248ZM15.75 14.25a3.75 3.75 0 1 1-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 0 1 1.925-3.546 3.75 3.75 0 0 1 3.255 3.718Z" clip-rule="evenodd" />
+                    </svg>
+
+                      Книги и Фильмы
+                </h2>
+                <!-- Slides -->
+      <div class="container mx-auto mx-auto p-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+          <!-- Replace this with your grid items -->
+            {% for el in products %}
+                
+          <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4">
+              <a href="page/{{ el.id }}">
+                  <div class="relative overflow-hidden rounded-xl">
+                    <img src="{{ el.img }}" alt="Placeholder Image" class="w-full h-80 rounded-md object-cover object-top transition duration-500 hover:scale-105">
+                    </div>
+                      <div class="px-1 py-4">
+                      <div class="font-bold text-xl mb-2 text-gray-900 dark:text-white">{{ el.title }} ({{ el.year }})</div>
+                      <p class="text-gray-700 text-base text-justify p-2 dark:text-white">
+                          {{ el.description|truncatechars:130 }}
+                      </p>
+
+                          <div class="flex p-6 justify-between align-middle" >
+                          {% if el.type == 'Фильм' %}
+                            <h2 class="text-violet-500 text-3xl p-2 font-bold pt-3">{{ el.rating }} / 10.0 </h2>
+                          {% else %}
+                                                      <h2 class="text-violet-500 text-3xl p-2 font-bold pt-3">{{ el.rating }} / 5.0 </h2>
+                            {% endif %}
+                              {% if user in el.users.all %}
+                              <a href="/add/{{ el.id }}" style="min-height: 60px; min-width: 60px; box-shadow: none"
+                                   class="button relative flex h-11 w-full items-center justify-center px-6  before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max" >
+                                        <span class="relative text-base font-semibold text-white dark:text-white flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                                            <path fill-rule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clip-rule="evenodd" />
+                                        </svg>
+
+                                        </span>
+                                </a>
+
+                              {% else %}
+
+                              <a href="/add/{{ el.id }}" style="min-height: 60px; min-width: 60px; box-shadow: none"
+                                   class="button relative flex h-11 w-full items-center justify-center px-6  before:border-gray-700 dark:before:border-gray-700 dark:before:bg-gray-800 sm:w-max" >
+                                        <span class="relative text-base font-semibold text-white dark:text-white flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                                        </svg>
+
+
+                                        </span>
+                                </a>
+
+                              {% endif %}
+
+
+                          </div>
+                    </div>
+              </a>
+          </div>
+
+            {% endfor %}
+
+          <!-- Add more items as needed -->
+        </div>
+      </div>
 
             </div>
 
