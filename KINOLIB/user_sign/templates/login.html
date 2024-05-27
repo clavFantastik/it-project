@@ -30,6 +30,8 @@
                            class="h-12 dark:text-white w-full  border-gray-200 dark:border-gray-600 dark:ring-2 p-3 rounded outline-none dark:focus:ring-gray-800  focus:ring-4 focus:outline-none focus:ring-gray-100 focus:border-neutral-400 dark:bg-gray-800"
                            style="box-shadow: 0 0 60px rgba(147,112,219,.34);line-height: 2rem;"
                            name="username"
+                           minlength="6"
+                           maxlength="30"
                            required>
                 </div>
                 <div>
@@ -40,7 +42,7 @@
                                class="h-12 dark:text-white w-full border-gray-200 dark:border-gray-600 dark:ring-2 p-3 rounded outline-none dark:focus:ring-gray-800  focus:ring-4 focus:outline-none focus:ring-gray-100 focus:border-neutral-400 dark:bg-gray-800"
                                style="box-shadow: 0 0 60px rgba(147,112,219,.34);line-height: 2rem;"
                                name="password"
-
+                               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                                required>
                     </div>
                 </div>
