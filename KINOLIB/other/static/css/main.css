@@ -1,0 +1,69 @@
+
+.swiper-button-next, .swiper-button-prev {
+        color: white;
+        background: linear-gradient(90deg, rgba(147,112,219,1) 0%, rgba(109,90,197,1) 100%);
+        padding: 30px;
+        box-shadow: 12px 12px 24px rgba(147,112,219,.64);
+        border-radius: 5px;
+}
+
+.swiper-button-next:after, .swiper-button-prev:after {
+        height: 40px;
+}
+
+.swiper-pagination-bullet-active {
+        background-color: rgba(147,112,219,1);
+}
+
+.swiper {
+  width: 250px;
+  height: fit-content;
+}
+
+.button {
+  min-width: 250px;
+  min-height: 60px;
+  font-size: 22px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #9370db;
+  background: linear-gradient(90deg, rgba(147,112,219,1) 0%, rgba(109,90,197,1) 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(147,112,219,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+.button::before {
+  content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #00FFCB;
+  box-shadow: 0 0 60px rgba(0,255,203,.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover {
+    transform: scale(105%);
+}
+
+.button:active {
+    transform: scale(95%);
+    transition: all 0.3s;
+}
+
+.swiper-slide {
+    margin-right: 20px;
+}
+
